@@ -37,7 +37,7 @@ module.exports = function (grunt) {
       },
       heroku: {
           options: {
-              remote: 'git@heroku.com:chameleon-verify-staging.git',
+              remote: 'git@heroku.com:chameleon-verify.git',
               branch: 'master'
           }
       }
