@@ -41,7 +41,7 @@ module.exports = function (grunt) {
               branch: 'master'
           }
       }
-   }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
