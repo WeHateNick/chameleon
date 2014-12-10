@@ -28,6 +28,21 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
+    buildcontrol: {
+      options: {
+          dir: 'dist',
+          commit: true,
+          push: true,
+          message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      heroku: {
+          options: {
+              remote: 'git@heroku.com:chameleon-verify-staging.git',
+              branch: 'master'
+          }
+      }
+   }
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -111,18 +126,23 @@ module.exports = function (grunt) {
     },
 
     // Empties folders to start fresh
+    // Empties folders to start fresh
     clean: {
-      dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= config.dist %>/*',
-            '!<%= config.dist %>/.git*'
-          ]
-        }]
-      },
-      server: '.tmp'
+        dist: {
+            files: [{
+                dot: true,
+                src: [
+                    '.tmp',
+                    '<%= yeoman.dist %>/*',
+                    '!<%= yeoman.dist %>/.git{,*/}*',
+                    '!<%= yeoman.dist %>/Procfile',
+                    '!<%= yeoman.dist %>/package.json',
+                    '!<%= yeoman.dist %>/web.js',
+                    '!<%= yeoman.dist %>/node_modules'
+               ]
+            }]
+        },
+        server: '.tmp'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -440,4 +460,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('deploy', ['buildcontrol']);
 };
