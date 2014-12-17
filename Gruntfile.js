@@ -133,12 +133,12 @@ module.exports = function (grunt) {
                 dot: true,
                 src: [
                     '.tmp',
-                    '<%= yeoman.dist %>/*',
-                    '!<%= yeoman.dist %>/.git{,*/}*',
-                    '!<%= yeoman.dist %>/Procfile',
-                    '!<%= yeoman.dist %>/package.json',
-                    '!<%= yeoman.dist %>/web.js',
-                    '!<%= yeoman.dist %>/node_modules'
+                    '<%= config.dist %>/*',
+                    '!<%= config.dist %>/.git{,*/}*',
+                    '!<%= config.dist %>/Procfile',
+                    '!<%= config.dist %>/package.json',
+                    '!<%= config.dist %>/web.js',
+                    '!<%= config.dist %>/node_modules'
                ]
             }]
         },
